@@ -1,5 +1,7 @@
 FROM ubuntu:20.04
-MAINTAINER AfterLogic Support <support@afterlogic.com>
+LABEL org.opencontainers.image.source="https://github.com/inadsan/docker-webmail-lite"
+LABEL org.opencontainers.image.authors="Daniel Sánchez"
+LABEL maintainer="AfterLogic Support <support@afterlogic.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -52,7 +54,7 @@ RUN rm -f /var/www/html/afterlogic.php
 COPY afterlogic.php /var/www/html/afterlogic.php
 RUN rm -rf /tmp/alwm
 
-VOLUME ["/var/www/html", "/var/log/httpd", "/var/lib/mysql", "/var/log/mysql", "/etc/apache2"]
+VOLUME ["/var/www/html/data", "/var/log/apache2", "/var/lib/mysql", "/var/log/mysql"]
 
 EXPOSE 80 3306
 
