@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
  
 env:
-  IMAGE_NAME: webmail-lite
+  IMAGE_NAME: ${{ github.event.repository.name }}
+  IMAGE_SRC: .
 
 jobs:
   build:
@@ -19,13 +20,16 @@ jobs:
       - name: set lower case repo name 
         run: |
           echo IMAGE_ID=$(echo "ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME" | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+      - name: get dockerfile version
+        run: |
+          echo IMAGE_VERSION=$(cat $IMAGE_SRC/Dockerfile | grep "LABEL version" | awk -F '"' '{print $2}') >> $GITHUB_ENV
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v3
         with:
           images: ${{ env.IMAGE_ID }}
           tags: |
-            type=semver,pattern={{version}},value=v9.5.0
+            type=semver,pattern={{version}},value=v${{ env.IMAGE_VERSION }}
             type=ref,event=branch
       - name: Login to DockerHub
         uses: docker/login-action@v1
@@ -43,6 +47,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
       

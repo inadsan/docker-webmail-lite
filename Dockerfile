@@ -3,6 +3,7 @@ LABEL org.opencontainers.image.source="https://github.com/inadsan/docker-webmail
 LABEL org.opencontainers.image.authors="Daniel Sánchez"
 LABEL maintainer="AfterLogic Support <support@afterlogic.com>"
 
+LABEL version="9.6.0"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
