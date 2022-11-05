@@ -9,7 +9,7 @@
             "options": {
                 "cwd": "."
             },
-            "command": "docker build --platform linux/arm64 -t ghcr.io/inadsan/docker-webmail-lite:main .",
+            "command": "docker build --platform linux/arm64 -t ghcr.io/inadsan/docker-webmail-lite:9.6.0 .",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
@@ -19,7 +19,7 @@
         {
             "label": "Build and Push",
             "type": "shell",
-            "command": "docker build --platform linux/arm64 -t ghcr.io/inadsan/docker-webmail-lite:main . ; docker image push ghcr.io/inadsan/docker-webmail-lite:main",
+            "command": "docker build --platform linux/arm64 -t ghcr.io/inadsan/docker-webmail-lite:9.6.0 . ; docker image push ghcr.io/inadsan/docker-webmail-lite:9.6.0",
             "problemMatcher": [],
             "group": {
                 "kind": "build",

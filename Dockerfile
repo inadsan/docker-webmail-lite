@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.16.2
 
 LABEL Maintainer="Afterlogic Support <support@afterlogic.com>" \
       Description="Afterlogic WebMail Lite image for Docker - using Nginx, PHP-FPM 8, MySQL on Alpine Linux" \
@@ -45,4 +45,4 @@ USER nobody
 RUN php81 /var/www/html/afterlogic.php
 EXPOSE 80
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
-HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping
+HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1/fpm-ping
