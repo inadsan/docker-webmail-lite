@@ -4,7 +4,7 @@ LABEL Maintainer="Afterlogic Support <support@afterlogic.com>" \
       Description="Afterlogic WebMail Lite image for Docker - using Nginx, PHP-FPM 8, MySQL on Alpine Linux" \
 	  org.opencontainers.image.source="https://github.com/inadsan/docker-webmail-lite" \
 	  org.opencontainers.image.authors="Daniel Sánchez"
-LABEL version="9.6.1"
+LABEL version="9.7.0"
 
 RUN apk --no-cache add php81 \
 	php81-cli \
