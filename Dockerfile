@@ -1,4 +1,4 @@
-FROM alpine:3.20.2
+FROM alpine:3.21.3
 
 LABEL Maintainer="Afterlogic Support <support@afterlogic.com>" \
       Description="Afterlogic WebMail Lite image for Docker - using Nginx, PHP-FPM 8, MySQL on Alpine Linux" \
