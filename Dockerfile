@@ -32,17 +32,17 @@ COPY config/php.ini /etc/php83/conf.d/custom.ini
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir -p /var/www/html
-RUN chown -R nobody.nobody /var/www/html && \
-	chown -R nobody.nobody /run && \
-	chown -R nobody.nobody /var/lib/nginx && \
-	chown -R nobody.nobody /var/log/nginx
+RUN chown -R nobody:nobody /var/www/html && \
+	chown -R nobody:nobody /run && \
+	chown -R nobody:nobody /var/lib/nginx && \
+	chown -R nobody:nobody /var/log/nginx
 
 WORKDIR /var/www/html
 
 RUN wget -P /tmp https://afterlogic.org/download/webmail_php.zip
 RUN unzip -qq /tmp/webmail_php.zip -d /var/www/html
 COPY afterlogic.php /var/www/html/afterlogic.php
-RUN chown -R nobody.nobody /var/www/html/data
+RUN chown -R nobody:nobody /var/www/html/data
 USER nobody
 RUN php83 /var/www/html/afterlogic.php
 EXPOSE 80
